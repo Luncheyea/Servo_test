@@ -33,17 +33,17 @@ void loop() {
       while (receive[i] >= '0' && receive[i] <= '9')
         degree = degree * 10 + (receive[i++] - '0');
 
-      if (degree > 180)
-        degree = 180;
-      else if (degree < 5)
-        degree = 5;
+      if (degree > 360)
+        degree = 360;
+      else if (degree < 10)
+        degree = 10;
 
       Serial.print("pin");
       Serial.print(pin);
       Serial.print(" = ");
       Serial.println(degree);
 
-      HCPCA9685.Servo(pin, degree * 2); // Move Servo
+      HCPCA9685.Servo(pin, degree); // Move Servo
     }
   }
 
