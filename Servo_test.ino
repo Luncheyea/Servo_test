@@ -1,7 +1,8 @@
 #include <HCPCA9685.h> // Include the HCPCA9685 library created by Andrew Davies
 
-#define I2CAdd 0x40 // Default address of the PCA9685 Module
-HCPCA9685 HCPCA9685(I2CAdd); // Define Library to use I2C communication
+// Default address of the PCA9685 Module
+// Define Library to use I2C communication
+HCPCA9685 HCPCA9685(0x40);
 
 void setup() {
   HCPCA9685.Init(SERVO_MODE); // Set to Servo Mode
@@ -32,17 +33,17 @@ void loop() {
       while (receive[i] >= '0' && receive[i] <= '9')
         degree = degree * 10 + (receive[i++] - '0');
 
-      if (degree > 360)
-        degree = 360;
-      else if (degree < 10)
-        degree = 10;
+      if (degree > 180)
+        degree = 180;
+      else if (degree < 5)
+        degree = 5;
 
       Serial.print("pin");
       Serial.print(pin);
       Serial.print(" = ");
       Serial.println(degree);
 
-      HCPCA9685.Servo(pin, degree); // Move Servo 0
+      HCPCA9685.Servo(pin, degree * 2); // Move Servo
     }
   }
 
