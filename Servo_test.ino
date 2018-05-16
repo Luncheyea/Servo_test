@@ -1,4 +1,4 @@
-#include <HCPCA9685.h> // Include the HCPCA9685 library created by Andrew Davies
+#include "HCPCA9685.h" // Include the HCPCA9685 library created by Andrew Davies
 
 // Default address of the PCA9685 Module
 // Define Library to use I2C communication
@@ -8,7 +8,7 @@ void setup() {
   HCPCA9685.Init(SERVO_MODE); // Set to Servo Mode
   HCPCA9685.Sleep(false); // Wake up PCA9685 module
 
-  Serial.begin(115200);
+  Serial.begin(9600);
 }
 
 int16_t degree = 10, pin = 0;
