@@ -4,6 +4,7 @@
 // Define Library to use I2C communication
 HCPCA9685 HCPCA9685(0x40);
 
+// SDA->A4, SCL->A5
 void setup() {
   HCPCA9685.Init(SERVO_MODE); // Set to Servo Mode
   HCPCA9685.Sleep(false); // Wake up PCA9685 module
